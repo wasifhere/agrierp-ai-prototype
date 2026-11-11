@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
+<link rel="icon" href="data:,">
+<title>Webinar use cases · prototype</title>
+<style>
+@font-face{font-family:'Plus Jakarta Sans';font-weight:300;font-style:normal;font-display:swap;src:url(vendor/fonts/plus-jakarta-sans-latin-300-normal.woff2) format('woff2')}
+@font-face{font-family:'Plus Jakarta Sans';font-weight:400;font-style:normal;font-display:swap;src:url(vendor/fonts/plus-jakarta-sans-latin-400-normal.woff2) format('woff2')}
+@font-face{font-family:'Plus Jakarta Sans';font-weight:500;font-style:normal;font-display:swap;src:url(vendor/fonts/plus-jakarta-sans-latin-500-normal.woff2) format('woff2')}
+@font-face{font-family:'Plus Jakarta Sans';font-weight:600;font-style:normal;font-display:swap;src:url(vendor/fonts/plus-jakarta-sans-latin-600-normal.woff2) format('woff2')}
+@font-face{font-family:'Plus Jakarta Sans';font-weight:700;font-style:normal;font-display:swap;src:url(vendor/fonts/plus-jakarta-sans-latin-700-normal.woff2) format('woff2')}
+html,body{margin:0;background:#fff;font-family:'Plus Jakarta Sans',sans-serif;color:#0a0a0a}
+.proto-bar{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;max-width:1356px;margin:0 auto;padding:18px 40px;font-size:13px;color:#5b6570}
+.proto-bar b{color:#0a1108} .proto-bar a{color:#0c5a42;font-weight:600;text-decoration:none} .proto-bar a:hover{text-decoration:underline}
+.proto-gap{height:80px}
+.proto-foot{max-width:1356px;margin:0 auto;padding:40px 40px 96px;font-size:13px;color:#5b6570;text-align:center}
+@media (max-width:599.98px){.proto-bar,.proto-foot{padding-left:16px;padding-right:16px} .proto-gap{height:48px}}
+/* Prototype only: FA Free has no `sparkles` (production uses the site's FA Pro kit) */
+i.fa-sparkles{--fa:"\e2ca"}
+/* Prototype only: flag draft content for reviewers */
+[data-draft] .uc-row__eyebrow::after{content:"  · draft copy";color:#d97706;letter-spacing:0;text-transform:none;font-weight:600}
+</style>
+<link rel="stylesheet" href="vendor/fa/css/fontawesome.min.css">
+<link rel="stylesheet" href="vendor/fa/css/solid.min.css">
+<link rel="stylesheet" href="use-cases.css">
+<link rel="stylesheet" href="preview.css">
+</head>
+<body>
+<div class="proto-bar"><span><b>Prototype</b> · Webinar page, use cases section</span><a href="index.html">← Feature page</a></div>
+<section class="uc" data-uc aria-labelledby="uc-title">
+  <header class="uc__header" data-uc-reveal>
+    <p class="uc__eyebrow">Where It Helps</p>
+    <h2 class="uc__title" id="uc-title">Where AgriCompanion Earns Its Keep</h2>
+    <p class="uc__intro">One assistant, four jobs where a quick answer pays off: out in the field, on inputs, in the back office, and when planning next season.</p>
+  </header>
+
+  <div class="uc__rows">
+    <article class="uc-row" data-uc-row aria-labelledby="uc-row-1">
+      <div class="uc-row__text">
+        <p class="uc-row__eyebrow">Quick answers</p>
+        <h3 class="uc-row__title" id="uc-row-1">Pull the figure you need, no report required</h3>
+        <p class="uc-row__body">Ask for one block's yield, your labor spend per acre, or how inventory use stacks up across blocks, and the answer is back in seconds. Questions that once sat waiting for the one person who knows the system now get answered on the spot.</p>
+        <ul class="uc-list">
+          <li class="uc-list__item"><span class="uc-icon" aria-hidden="true"><i class="fa-solid fa-database"></i></span><span>On-demand yield, cost, inventory, and inspection figures</span></li>
+          <li class="uc-list__item"><span class="uc-icon" aria-hidden="true"><i class="fa-solid fa-table-columns"></i></span><span>Compare blocks, seasons, and crews side by side, no spreadsheet needed</span></li>
+          <li class="uc-list__item"><span class="uc-icon" aria-hidden="true"><i class="fa-solid fa-message"></i></span><span>Ask in everyday language, with no filters or report tools to learn</span></li>
+        </ul>
+      </div>
+      <figure class="uc-media" style="--glass-w: 488.205px; --chat-bleed: 10.87px;">
+        <img class="uc-media__bg" src="assets/bg-instant-answers.jpg" alt="" loading="lazy" decoding="async">
+        <div class="uc-media__glass">
+          <img class="uc-media__chat" src="assets/chat-instant-answers.png" width="456" height="236" loading="lazy" decoding="async"
+               alt="Assistant reply: an irrigation suggestion for Block R4 of 18 mm a day, a fertilizer rate of 12 kg/ha N, and a flag on Zone C.">
+        </div>
+      </figure>
+    </article>
+
+    <article class="uc-row uc-row--reverse" data-uc-row aria-labelledby="uc-row-2">
+      <div class="uc-row__text">
+        <p class="uc-row__eyebrow">Input planning</p>
+        <h3 class="uc-row__title" id="uc-row-2">Spend water and fertilizer where the data shows a return</h3>
+        <p class="uc-row__body">AgriCompanion looks at field conditions, the forecast, and what each crop requires, then suggests how much water, fertilizer, and other inputs a block should get, so budget goes to what moves yield rather than to routine.</p>
+        <ul class="uc-list">
+          <li class="uc-list__item"><span class="uc-icon" aria-hidden="true"><i class="fa-solid fa-seedling"></i></span><span>Input suggestions based on field, weather, and growth stage</span></li>
+          <li class="uc-list__item"><span class="uc-icon" aria-hidden="true"><i class="fa-solid fa-triangle-exclamation"></i></span><span>Highlights weak zones and areas getting too much</span></li>
+          <li class="uc-list__item"><span class="uc-icon" aria-hidden="true"><i class="fa-solid fa-lightbulb"></i></span><span>Practical next steps grounded in your own figures</span></li>
+        </ul>
+      </div>
+      <figure class="uc-media" style="--glass-w: 453.333px; --chat-bleed: 5.74px;">
+        <img class="uc-media__bg" src="assets/bg-smarter-inputs.jpg" alt="" loading="lazy" decoding="async">
+        <div class="uc-media__glass">
+          <img class="uc-media__chat" src="assets/chat-smarter-inputs.png" width="416" height="254" loading="lazy" decoding="async"
+               alt="Assistant reply to a request for this month's P&amp;L: $42,800 net for July 2025, 8% over budget, with a purchase order raised automatically.">
+        </div>
+      </figure>
+    </article>
+
+    <article class="uc-row" data-uc-row aria-labelledby="uc-row-3">
+      <div class="uc-row__text">
+        <p class="uc-row__eyebrow">Back-office automation</p>
+        <h3 class="uc-row__title" id="uc-row-3">Wrap up month-end and reorders without the grind</h3>
+        <p class="uc-row__body">Request a P&amp;L, a cash-flow summary, or a budget-versus-actual view for any period and get it within moments. Set stock thresholds and AgriCompanion drafts the purchase orders, so closing the month and restocking no longer take over your week.</p>
+        <ul class="uc-list">
+          <li class="uc-list__item"><span class="uc-icon" aria-hidden="true"><i class="fa-solid fa-file-invoice-dollar"></i></span><span>Financial reports from a single request</span></li>
+          <li class="uc-list__item"><span class="uc-icon" aria-hidden="true"><i class="fa-solid fa-cart-shopping"></i></span><span>Purchase orders raised when stock hits your set levels</span></li>
+          <li class="uc-list__item"><span class="uc-icon" aria-hidden="true"><i class="fa-solid fa-wallet"></i></span><span>Budgets shaped by what you've spent before</span></li>
+        </ul>
+      </div>
+      <figure class="uc-media" style="--glass-w: 453.333px; --chat-bleed: 0px;">
+        <img class="uc-media__bg" src="assets/bg-back-office.jpg" alt="" loading="lazy" decoding="async">
+        <div class="uc-media__glass">
+          <img class="uc-media__chat" src="assets/chat-back-office.png" width="410" height="260" loading="lazy" decoding="async"
+               alt="Assistant reply to a harvest-cost question for Block R4: an estimated $6,240, about 148 hours of work, and a pest-pressure warning.">
+        </div>
+      </figure>
+    </article>
+  </div>
+</section>
+
+<footer class="proto-foot">Design prototype for review. Other sections of the webinar page are not included.</footer>
+<script src="use-cases.js"></script>
+<script src="preview.js"></script>
+</body>
+</html>

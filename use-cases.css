@@ -1,0 +1,313 @@
+/* ==========================================================================
+   AgriCompanion — Use Cases section
+   All rules are scoped to .uc / .uc-* so nothing leaks into other sections.
+
+   Breakpoints
+     ≥1200px  Desktop  — exact Figma layout (1440 frame: 24px side margin, 1280 rows)
+     992–1199 Small desktop / landscape tablet — two columns, fluid, smaller type
+     600–991  Tablet   — rows stack, media on top, media 16:10
+     <600     Mobile   — stacked, tighter spacing, glass card scales to fit
+   ========================================================================== */
+
+.uc {
+  /* File tokens: `green` + `white` variables from the Figma file */
+  --uc-green: #02b553;
+  --uc-surface: #f4f7f9;
+  /* Literal values used in the frame */
+  --uc-eyebrow: #48b754;
+  --uc-ink: #0a0a0a;
+  --uc-card: #ffffff;
+  --uc-tile-border: #f2f2f2;
+  --uc-font: "Plus Jakarta Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  --uc-ease: cubic-bezier(.22, .61, .36, 1);
+  --uc-dur: 700ms;
+
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+  margin: 0 24px;
+  padding: 80px 24px;
+  border-radius: 24px;
+  background: var(--uc-surface);
+  color: var(--uc-ink);
+  font-family: var(--uc-font);
+  -webkit-font-smoothing: antialiased;
+}
+.uc *, .uc *::before, .uc *::after { box-sizing: inherit; }
+.uc :where(h2, h3, p, ul, figure) { margin: 0; padding: 0; }
+.uc ul { list-style: none; }
+
+/* --- Section header ---------------------------------------------------- */
+.uc__header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+  width: 100%;
+  max-width: 1164px;
+  text-align: center;
+  overflow-wrap: break-word;
+}
+.uc__eyebrow,
+.uc-row__eyebrow {
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 48px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  text-box: trim-both cap alphabetic;
+}
+.uc__eyebrow { color: var(--uc-eyebrow); }
+.uc__title {
+  max-width: 1120px;
+  font-size: 40px;
+  font-weight: 600;
+  line-height: 54px;
+  text-box: trim-both cap alphabetic;
+}
+.uc__intro {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 26px;
+}
+
+/* --- Rows -------------------------------------------------------------- */
+.uc__rows {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  width: 100%;
+  max-width: 1280px;
+}
+.uc-row {
+  display: grid;
+  grid-template-columns: minmax(0, 615fr) minmax(0, 625fr);
+  gap: 40px;
+  align-items: center; /* at 1440 text and media are both 528px, as in Figma */
+}
+.uc-row--reverse { grid-template-columns: minmax(0, 625fr) minmax(0, 615fr); }
+.uc-row--reverse .uc-media { order: -1; }
+
+.uc-row__text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 24px;
+  padding: 40px 0;
+  overflow-wrap: break-word;
+}
+.uc-row__title {
+  font-size: 40px;
+  font-weight: 600;
+  line-height: 52px;
+  text-box: trim-both cap alphabetic;
+}
+.uc-row__eyebrow + .uc-row__title { margin-top: 0; }
+.uc-row__body {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 26px;
+}
+
+/* Feature list ------------------------------------------------------------ */
+.uc-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.uc-list__item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 10px;
+  border-radius: 6px;
+  background: var(--uc-card); /* Figma: white 10% Plus Lighter over #f4f7f9 → renders #fff */
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 22px;
+  transition: box-shadow 250ms var(--uc-ease);
+}
+.uc-icon {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border: 0.714px solid var(--uc-tile-border);
+  border-radius: 2.857px;
+  background: var(--uc-surface);
+  color: var(--uc-green);
+  font-size: 20px;
+  line-height: 1;
+  transition: background-color 250ms var(--uc-ease), color 250ms var(--uc-ease), border-color 250ms var(--uc-ease);
+}
+
+/* Media card -------------------------------------------------------------- */
+.uc-media {
+  position: relative;
+  height: 528px;
+  overflow: hidden;
+  border-radius: 12px;
+  background: #d9dfe3; /* shows only while the photo loads */
+  isolation: isolate;
+}
+.uc-media__bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: translate3d(0, var(--uc-bg-par, 0px), 0) scale(calc(var(--uc-bg-scale, 1) * var(--uc-bg-drift, 1)));
+  will-change: transform;
+}
+.uc-media__glass {
+  position: absolute;
+  top: 50%;
+  left: calc(50% + 0.5px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: min(var(--glass-w), 84%);
+  padding: 21.538px;
+  border-radius: 25.846px;
+  transform: translate(-50%, calc(-50% + var(--uc-glass-y, 0px) + var(--uc-glass-par, 0px) + var(--uc-glass-float, 0px)));
+  /* Approximation of Figma's native "Glass" effect (radius 40, refraction 1, depth 78, dispersion .86) */
+  -webkit-backdrop-filter: blur(10px) saturate(2.1) brightness(1.12) contrast(1.05);
+  backdrop-filter: blur(10px) saturate(2.1) brightness(1.12) contrast(1.05);
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, .45),
+    inset 0 2px 3px rgba(255, 255, 255, .55),
+    inset 2px 0 8px rgba(255, 255, 255, .30),
+    inset -2px -3px 10px rgba(0, 0, 0, .12),
+    0 10px 30px rgba(0, 0, 0, .10);
+  will-change: transform;
+}
+.uc-media__glass::before { /* Figma fill: white 6%, Plus Lighter */
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: rgba(255, 255, 255, .06);
+  mix-blend-mode: plus-lighter;
+  pointer-events: none;
+}
+.uc-media__chat {
+  position: relative;
+  display: block;
+  width: calc(100% + var(--chat-bleed, 0px)); /* row 2's chat is 5.74px wider than its glass in Figma */
+  max-width: none;
+  height: auto;
+  border-radius: 22px;
+  transition: transform 400ms var(--uc-ease), filter 400ms var(--uc-ease);
+}
+
+/* --- Hover / focus states ---------------------------------------------- */
+@media (hover: hover) and (pointer: fine) {
+  .uc-list__item:hover { box-shadow: 0 4px 16px rgba(10, 10, 10, .06); }
+  .uc-list__item:hover .uc-icon {
+    background: var(--uc-green);
+    border-color: var(--uc-green);
+    color: #fff;
+  }
+  .uc-media:hover .uc-media__chat {
+    transform: translateY(-6px);
+    filter: drop-shadow(0 14px 22px rgba(0, 0, 0, .18));
+  }
+}
+
+/* --- Scroll reveal (only when JS has run; content is visible without JS) */
+.uc.uc--js [data-uc-reveal] > *,
+.uc.uc--js .uc-row__text > *,
+.uc.uc--js .uc-list__item {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity var(--uc-dur) var(--uc-ease), transform var(--uc-dur) var(--uc-ease);
+  transition-delay: calc(var(--uc-i, 0) * 80ms);
+}
+.uc.uc--js .uc-media {
+  clip-path: inset(6% 6% 6% 6% round 12px);
+  transition: clip-path 900ms var(--uc-ease);
+}
+.uc.uc--js .uc-media__bg { --uc-bg-scale: 1.12; transition: transform 1100ms var(--uc-ease); }
+.uc.uc--js .uc-media__glass {
+  opacity: 0;
+  --uc-glass-y: 40px;
+  transition: opacity 600ms var(--uc-ease) 250ms, transform 900ms var(--uc-ease) 250ms;
+}
+
+.uc.uc--js .is-visible[data-uc-reveal] > *,
+.uc.uc--js .is-visible .uc-row__text > *,
+.uc.uc--js .is-visible .uc-list__item { opacity: 1; transform: none; }
+.uc.uc--js .is-visible .uc-media { clip-path: inset(0 0 0 0 round 12px); }
+.uc.uc--js .is-visible .uc-media__bg { --uc-bg-scale: 1.06; }
+.uc.uc--js .is-visible .uc-media__glass { opacity: 1; --uc-glass-y: 0px; }
+/* once revealed, parallax drives transforms directly — drop the long transitions */
+.uc.uc--js .is-settled .uc-media__bg,
+.uc.uc--js .is-settled .uc-media__glass { transition: opacity 600ms var(--uc-ease); }
+
+/* Browsers without text-box-trim (Firefox at time of writing): approximate the trimmed spacing */
+@supports not (text-box: trim-both cap alphabetic) {
+  .uc__eyebrow, .uc-row__eyebrow { line-height: 20px; }
+  .uc__header { gap: 18px; }
+  .uc-row__text { gap: 16px; }
+  .uc-row__text > .uc-row__body { margin-top: 4px; }
+}
+
+.uc.uc--no-anim, .uc.uc--no-anim * { transition: none !important; }
+
+/* --- Small desktop / landscape tablet: 992–1199 ------------------------- */
+@media (max-width: 1199.98px) {
+  .uc { margin: 0 16px; padding: 64px 24px; }
+  .uc__title { font-size: 36px; line-height: 46px; }
+  .uc__rows, .uc-row { gap: 32px; }
+  .uc-row__title { font-size: 32px; line-height: 42px; }
+  .uc-list__item { font-size: 16px; line-height: 22px; }
+  .uc-media { height: 460px; }
+}
+
+/* --- Tablet: rows stack, media first ----------------------------------- */
+@media (max-width: 991.98px) {
+  .uc__header { gap: 24px; }
+  .uc__rows { gap: 56px; }
+  .uc-row,
+  .uc-row--reverse { grid-template-columns: minmax(0, 1fr); gap: 32px; }
+  .uc-row .uc-media { order: -1; height: auto; aspect-ratio: 16 / 10; }
+  .uc-row__text { padding: 0; gap: 20px; }
+}
+
+/* --- Mobile ------------------------------------------------------------- */
+@media (max-width: 599.98px) {
+  .uc { margin: 0 12px; padding: 48px 16px; border-radius: 16px; gap: 32px; }
+  .uc__header { gap: 20px; }
+  .uc__eyebrow, .uc-row__eyebrow { font-size: 14px; }
+  .uc__title { font-size: 28px; line-height: 36px; }
+  .uc__intro { font-size: 15px; line-height: 24px; }
+  .uc__rows { gap: 48px; }
+  .uc-row,
+  .uc-row--reverse { gap: 24px; }
+  .uc-row .uc-media { aspect-ratio: 1 / 0.9; }
+  .uc-row__text { gap: 16px; }
+  .uc-row__title { font-size: 24px; line-height: 32px; }
+  .uc-row__body { font-size: 15px; line-height: 24px; }
+  .uc-list { gap: 8px; }
+  .uc-list__item { gap: 12px; padding: 8px; font-size: 15px; line-height: 20px; }
+  .uc-icon { width: 36px; height: 36px; font-size: 17px; }
+  .uc-media__glass { width: 94%; padding: 10px; border-radius: 18px; }
+  .uc-media__chat { border-radius: 14px; }
+}
+
+/* --- Reduced motion: everything static and visible ----------------------- */
+@media (prefers-reduced-motion: reduce) {
+  .uc.uc--js [data-uc-reveal] > *,
+  .uc.uc--js .uc-row__text > *,
+  .uc.uc--js .uc-list__item { opacity: 1 !important; transform: none !important; transition: none !important; }
+  .uc.uc--js .uc-media { clip-path: none !important; transition: none !important; }
+  .uc.uc--js .uc-media__glass { opacity: 1 !important; --uc-glass-y: 0px !important; transition: none !important; }
+  .uc .uc-media__bg { --uc-bg-scale: 1 !important; transition: none !important; }
+  .uc-media__chat, .uc-list__item, .uc-icon { transition: none !important; }
+  .uc-media:hover .uc-media__chat { transform: none; }
+}

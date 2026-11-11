@@ -1,0 +1,265 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
+<link rel="icon" href="data:,">
+<title>AgriCompanion feature page · prototype</title>
+<style>
+@font-face{font-family:'Plus Jakarta Sans';font-weight:300;font-style:normal;font-display:swap;src:url(vendor/fonts/plus-jakarta-sans-latin-300-normal.woff2) format('woff2')}
+@font-face{font-family:'Plus Jakarta Sans';font-weight:400;font-style:normal;font-display:swap;src:url(vendor/fonts/plus-jakarta-sans-latin-400-normal.woff2) format('woff2')}
+@font-face{font-family:'Plus Jakarta Sans';font-weight:500;font-style:normal;font-display:swap;src:url(vendor/fonts/plus-jakarta-sans-latin-500-normal.woff2) format('woff2')}
+@font-face{font-family:'Plus Jakarta Sans';font-weight:600;font-style:normal;font-display:swap;src:url(vendor/fonts/plus-jakarta-sans-latin-600-normal.woff2) format('woff2')}
+@font-face{font-family:'Plus Jakarta Sans';font-weight:700;font-style:normal;font-display:swap;src:url(vendor/fonts/plus-jakarta-sans-latin-700-normal.woff2) format('woff2')}
+html,body{margin:0;background:#fff;font-family:'Plus Jakarta Sans',sans-serif;color:#0a0a0a}
+.proto-bar{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;max-width:1356px;margin:0 auto;padding:18px 40px;font-size:13px;color:#5b6570}
+.proto-bar b{color:#0a1108} .proto-bar a{color:#0c5a42;font-weight:600;text-decoration:none} .proto-bar a:hover{text-decoration:underline}
+.proto-gap{height:80px}
+.proto-foot{max-width:1356px;margin:0 auto;padding:40px 40px 96px;font-size:13px;color:#5b6570;text-align:center}
+@media (max-width:599.98px){.proto-bar,.proto-foot{padding-left:16px;padding-right:16px} .proto-gap{height:48px}}
+/* Prototype only: FA Free has no `sparkles` (production uses the site's FA Pro kit) */
+i.fa-sparkles{--fa:"\e2ca"}
+/* Prototype only: flag draft content for reviewers */
+[data-draft] .uc-row__eyebrow::after{content:"  · draft copy";color:#d97706;letter-spacing:0;text-transform:none;font-weight:600}
+</style>
+<link rel="stylesheet" href="vendor/fa/css/fontawesome.min.css">
+<link rel="stylesheet" href="vendor/fa/css/solid.min.css">
+<link rel="stylesheet" href="hero.css">
+<link rel="stylesheet" href="use-cases.css">
+<link rel="stylesheet" href="use-cases-tabs.css">
+<link rel="stylesheet" href="security.css">
+<link rel="stylesheet" href="preview.css">
+</head>
+<body>
+<div class="proto-bar"><span><b>Prototype</b> · AgriCompanion feature page</span><a href="webinar.html">Webinar section →</a></div>
+<section class="af-hero" data-af-hero aria-labelledby="af-hero-title">
+  <div class="af-hero__grid">
+    <div class="af-hero__intro">
+      <div class="af-hero__content">
+        <div class="af-hero__lead">
+          <p class="af-hero__badge" data-af-in>
+            <i class="fa-solid fa-sparkles af-hero__badge-icon" aria-hidden="true"></i>
+            <span>Farm Operations • AI Assistant</span>
+          </p>
+          <h1 class="af-hero__title" id="af-hero-title" data-af-in>
+            <span class="af-hero__title-accent">Get a Clear Read on Your Farm</span> Without Hunting for Numbers
+          </h1>
+          <p class="af-hero__text" data-af-in>AgriCompanion brings Microsoft Copilot into AgriERP as an AI assistant for your operation. Skip the screen-by-screen searching and the wait for someone to run a report: type a question in everyday language and get back answers, projections, and reports built on your own farm records.</p>
+        </div>
+
+        <div class="af-hero__ctas" data-af-in>
+          <a class="af-btn af-btn--primary" href="#contact">
+            <span>Speak With an Expert</span>
+            <span class="af-btn__icon" aria-hidden="true"><i class="fa-solid fa-calendar"></i></span>
+          </a>
+          <a class="af-btn af-btn--light" href="#use-cases" data-af-scroll>
+            <span>Explore What It Can Do</span>
+            <span class="af-btn__icon" aria-hidden="true"><i class="fa-solid fa-rocket"></i></span>
+          </a>
+        </div>
+
+        <div class="af-hero__powered" data-af-in>
+          <p class="af-hero__powered-label">Built on Microsoft Copilot</p>
+          <ul class="af-hero__logos">
+            <li class="af-hero__logo"><img src="assets/hero/logo-copilot.png" width="131" height="37" alt="Microsoft Copilot"></li>
+            <li class="af-hero__logo"><img src="assets/hero/logo-dynamics365.png" width="132" height="48" alt="Microsoft Dynamics 365"></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <figure class="af-hero__visual" data-af-visual>
+      <img class="af-hero__bg" src="assets/hero/bg-hero.jpg" alt="" fetchpriority="high" decoding="async">
+      <div class="af-hero__veil" aria-hidden="true"></div>
+      <div class="af-hero__stage" data-af-stage>
+        <div class="af-hero__phones">
+          <img class="af-hero__phone af-hero__phone--back" src="assets/hero/phone-back.png" width="257" height="558" decoding="async"
+               alt="Phone showing an AgriCompanion conversation: a clock-in, a next-day weather outlook, open work orders, and a job being started.">
+          <img class="af-hero__phone af-hero__phone--front" src="assets/hero/phone-front.png" width="268" height="583" decoding="async"
+               alt="Phone showing the AgriCompanion start screen with today's weather, a welcome message, and suggested prompts.">
+        </div>
+      </div>
+    </figure>
+  </div>
+</section>
+
+<div class="proto-gap"></div>
+<section class="uc uc--tabs" id="use-cases" data-uc-tabs aria-labelledby="uct-title">
+  <header class="uc__header" data-uc-reveal>
+    <p class="uc__eyebrow">Where It Helps</p>
+    <h2 class="uc__title" id="uct-title">Where AgriCompanion Earns Its Keep</h2>
+    <p class="uc__intro">One assistant, four jobs where a quick answer pays off: out in the field, on inputs, in the back office, and when planning next season.</p>
+  </header>
+
+  <div class="uc-tabs-wrap" data-uc-reveal>
+    <div class="uc-tabs" role="tablist" aria-label="AgriCompanion use cases">
+      <span class="uc-tabs__indicator" aria-hidden="true"></span>
+      <button class="uc-tab" type="button" role="tab" id="uct-tab-1" aria-controls="uct-panel-1" aria-selected="true">Quick answers</button>
+      <button class="uc-tab" type="button" role="tab" id="uct-tab-2" aria-controls="uct-panel-2" aria-selected="false" tabindex="-1">Input planning</button>
+      <button class="uc-tab" type="button" role="tab" id="uct-tab-3" aria-controls="uct-panel-3" aria-selected="false" tabindex="-1">Back-office automation</button>
+      <button class="uc-tab" type="button" role="tab" id="uct-tab-4" aria-controls="uct-panel-4" aria-selected="false" tabindex="-1">Season forecasting</button>
+    </div>
+  </div>
+
+  <div class="uc-panels">
+    <article class="uc-row uc-row--reverse uc-panel" role="tabpanel" id="uct-panel-1" aria-labelledby="uct-tab-1" tabindex="0">
+      <div class="uc-row__text">
+        <p class="uc-row__eyebrow">Quick answers</p>
+        <h3 class="uc-row__title">Pull the figure you need, no report required</h3>
+        <p class="uc-row__body">Ask for one block's yield, your labor spend per acre, or how inventory use stacks up across blocks, and the answer is back in seconds. Questions that once sat waiting for the one person who knows the system now get answered on the spot.</p>
+        <ul class="uc-list">
+          <li class="uc-list__item"><span class="uc-icon" aria-hidden="true"><i class="fa-solid fa-database"></i></span><span>On-demand yield, cost, inventory, and inspection figures</span></li>
+          <li class="uc-list__item"><span class="uc-icon" aria-hidden="true"><i class="fa-solid fa-table-columns"></i></span><span>Compare blocks, seasons, and crews side by side, no spreadsheet needed</span></li>
+          <li class="uc-list__item"><span class="uc-icon" aria-hidden="true"><i class="fa-solid fa-message"></i></span><span>Ask in everyday language, with no filters or report tools to learn</span></li>
+        </ul>
+      </div>
+      <figure class="uc-media" style="--glass-w: 488.205px; --chat-bleed: 11.49px;">
+        <img class="uc-media__bg" src="assets/bg-instant-answers.jpg" alt="" decoding="async">
+        <div class="uc-media__glass">
+          <img class="uc-media__chat" src="assets/chat-instant-answers@2x.png" width="457" height="237" decoding="async"
+               alt="Assistant reply: an irrigation suggestion for Block R4 of 18 mm a day, a fertilizer rate of 12 kg/ha N, and a flag on Zone C.">
+        </div>
+      </figure>
+    </article>
+
+    <article class="uc-row uc-row--reverse uc-panel" role="tabpanel" id="uct-panel-2" aria-labelledby="uct-tab-2" tabindex="0">
+      <div class="uc-row__text">
+        <p class="uc-row__eyebrow">Input planning</p>
+        <h3 class="uc-row__title">Spend water and fertilizer where the data shows a return</h3>
+        <p class="uc-row__body">AgriCompanion looks at field conditions, the forecast, and what each crop requires, then suggests how much water, fertilizer, and other inputs a block should get, so budget goes to what moves yield rather than to routine.</p>
+        <ul class="uc-list">
+          <li class="uc-list__item"><span class="uc-icon" aria-hidden="true"><i class="fa-solid fa-seedling"></i></span><span>Input suggestions based on field, weather, and growth stage</span></li>
+          <li class="uc-list__item"><span class="uc-icon" aria-hidden="true"><i class="fa-solid fa-triangle-exclamation"></i></span><span>Highlights weak zones and areas getting too much</span></li>
+          <li class="uc-list__item"><span class="uc-icon" aria-hidden="true"><i class="fa-solid fa-lightbulb"></i></span><span>Practical next steps grounded in your own figures</span></li>
+        </ul>
+      </div>
+      <figure class="uc-media" style="--glass-w: 453.333px; --chat-bleed: 5.74px;">
+        <img class="uc-media__bg" src="assets/bg-smarter-inputs.jpg" alt="" loading="lazy" decoding="async">
+        <div class="uc-media__glass">
+          <img class="uc-media__chat" src="assets/chat-smarter-inputs@2x.png" width="416" height="254" loading="lazy" decoding="async"
+               alt="Assistant reply to a request for this month's P&amp;L: $42,800 net for July 2025, 8% over budget, with a purchase order raised automatically.">
+        </div>
+      </figure>
+    </article>
+
+    <article class="uc-row uc-row--reverse uc-panel" role="tabpanel" id="uct-panel-3" aria-labelledby="uct-tab-3" tabindex="0">
+      <div class="uc-row__text">
+        <p class="uc-row__eyebrow">Back-office automation</p>
+        <h3 class="uc-row__title">Wrap up month-end and reorders without the grind</h3>
+        <p class="uc-row__body">Request a P&amp;L, a cash-flow summary, or a budget-versus-actual view for any period and get it within moments. Set stock thresholds and AgriCompanion drafts the purchase orders, so closing the month and restocking no longer take over your week.</p>
+        <ul class="uc-list">
+          <li class="uc-list__item"><span class="uc-icon" aria-hidden="true"><i class="fa-solid fa-file-invoice-dollar"></i></span><span>Financial reports from a single request</span></li>
+          <li class="uc-list__item"><span class="uc-icon" aria-hidden="true"><i class="fa-solid fa-cart-shopping"></i></span><span>Purchase orders raised when stock hits your set levels</span></li>
+          <li class="uc-list__item"><span class="uc-icon" aria-hidden="true"><i class="fa-solid fa-wallet"></i></span><span>Budgets shaped by what you've spent before</span></li>
+        </ul>
+      </div>
+      <figure class="uc-media" style="--glass-w: 453.333px; --chat-bleed: 0px;">
+        <img class="uc-media__bg" src="assets/bg-back-office.jpg" alt="" loading="lazy" decoding="async">
+        <div class="uc-media__glass">
+          <img class="uc-media__chat" src="assets/chat-back-office@2x.png" width="410" height="260" loading="lazy" decoding="async"
+               alt="Assistant reply to a harvest-cost question for Block R4: an estimated $6,240, about 148 hours of work, and a pest-pressure warning.">
+        </div>
+      </figure>
+    </article>
+
+    <article class="uc-row uc-row--reverse uc-panel" role="tabpanel" id="uct-panel-4" aria-labelledby="uct-tab-4" tabindex="0" data-draft>
+      <div class="uc-row__text">
+        <p class="uc-row__eyebrow">Season forecasting</p>
+        <h3 class="uc-row__title">Plan next season before committing to it</h3>
+        <p class="uc-row__body">AgriCompanion projects yield, labor hours, and input costs for the coming season from your own history and current field conditions, so crews, budgets, and purchasing are planned before the pressure is on.</p>
+        <ul class="uc-list">
+          <li class="uc-list__item"><span class="uc-icon" aria-hidden="true"><i class="fa-solid fa-chart-line"></i></span><span>Yield and cost forecasts built from your historical data</span></li>
+          <li class="uc-list__item"><span class="uc-icon" aria-hidden="true"><i class="fa-solid fa-users"></i></span><span>Labor and equipment needs projected by block and week</span></li>
+          <li class="uc-list__item"><span class="uc-icon" aria-hidden="true"><i class="fa-solid fa-calendar-check"></i></span><span>Early warnings so plans change before the season starts</span></li>
+        </ul>
+      </div>
+      <figure class="uc-media" style="--glass-w: 453.333px; --chat-bleed: 0px;">
+        <img class="uc-media__bg" src="assets/bg-predictive-planning.jpg" alt="" loading="lazy" decoding="async">
+        <div class="uc-media__glass">
+          <div class="uc-chat" role="img" aria-label="Asked “Forecast next season for Block R4”, AgriERP AI Assistant replies: 2027 season forecast, 1,820 bins projected yield, 6% above last season, labor peak in week 34.">
+            <p class="uc-chat__ask">Forecast next season for Block R4</p>
+            <p class="uc-chat__who"><span class="uc-chat__avatar"></span><b>AgriERP AI Assistant</b><span>09:05 AM</span></p>
+            <div class="uc-chat__card">
+              <p class="uc-chat__label">R4 · 2027 Season Forecast</p>
+              <p class="uc-chat__value">1,820 <span>bins projected</span></p>
+              <p class="uc-chat__pills"><span class="uc-chat__pill uc-chat__pill--green">+6% vs last season</span><span class="uc-chat__pill uc-chat__pill--blue">Labor peak: wk 34</span></p>
+            </div>
+            <span class="uc-chat__skel"></span>
+            <span class="uc-chat__skel uc-chat__skel--short"></span>
+          </div>
+        </div>
+      </figure>
+    </article>
+  </div>
+</section>
+
+<div class="proto-gap"></div>
+<section class="sec" data-sec aria-labelledby="sec-title">
+  <div class="sec__card">
+    <div class="sec__grid">
+      <div class="sec__text">
+        <div class="sec__head">
+          <p class="sec__eyebrow" data-sec-in>Trust &amp; security</p>
+          <h2 class="sec__title" id="sec-title" data-sec-in>AI You Can Check, Not Just Trust</h2>
+        </div>
+        <p class="sec__body" data-sec-in>An assistant only helps if you can rely on what it reads and what it reports. AgriCompanion runs in Microsoft's enterprise cloud, follows the access rules you already have, and links each answer to an actual record.</p>
+        <ul class="sec__list">
+          <li class="sec__item" data-sec-in>
+            <span class="sec__icon" aria-hidden="true"><i class="fa-solid fa-shield-halved"></i></span>
+            <span class="sec__item-text">
+              <span class="sec__item-title">Your data stays under your control</span>
+              <span class="sec__item-desc">AgriCompanion sits on Microsoft's enterprise cloud under the same security model and controls as the rest of AgriERP. Your business data isn't used to train public models.</span>
+            </span>
+          </li>
+          <li class="sec__item" data-sec-in>
+            <span class="sec__icon" aria-hidden="true"><i class="fa-solid fa-user-shield"></i></span>
+            <span class="sec__item-text">
+              <span class="sec__item-title">Answers respect user roles</span>
+              <span class="sec__item-desc">Each person only gets AI responses drawn from records their role can already open, so a field supervisor and a finance lead see different answers from the same assistant.</span>
+            </span>
+          </li>
+          <li class="sec__item" data-sec-in>
+            <span class="sec__icon" aria-hidden="true"><i class="fa-solid fa-route"></i></span>
+            <span class="sec__item-text">
+              <span class="sec__item-title">Every figure has a source</span>
+              <span class="sec__item-desc">Each number links back to the ERP record it came from, so you can check an answer yourself instead of trusting a black box.</span>
+            </span>
+          </li>
+        </ul>
+      </div>
+
+      <figure class="sec__media">
+        <img class="sec__bg" src="assets/bg-security.jpg" alt="" loading="lazy" decoding="async">
+        <div class="sec__glass">
+          <div class="sec__note">
+            <p class="sec__note-title">Where an answer comes from</p>
+            <p class="sec__note-text">Each figure the assistant returns links back to the records that produced it.</p>
+          </div>
+          <ul class="sec__trace" aria-label="Example of a traced answer">
+            <li class="sec__trace-row">
+              <p class="sec__trace-top"><span class="sec__trace-label">Question</span><span class="sec__trace-dot" aria-hidden="true">•</span><span class="sec__trace-value">Labor cost per acre, Block 14</span></p>
+              <p class="sec__trace-sub">Result: $312 per acre, season to date</p>
+            </li>
+            <li class="sec__trace-row">
+              <p class="sec__trace-top"><span class="sec__trace-label">Source</span><span class="sec__trace-dot" aria-hidden="true">•</span><span class="sec__trace-value">1,204 hours logged</span></p>
+              <p class="sec__trace-sub">Block 14 resource journal, tied to work orders</p>
+            </li>
+            <li class="sec__trace-row">
+              <p class="sec__trace-top"><span class="sec__trace-label">Check it</span><span class="sec__trace-dot" aria-hidden="true">•</span><span class="sec__trace-value">open the original records</span></p>
+              <p class="sec__trace-sub">Each value links to where it lives in the ERP</p>
+            </li>
+          </ul>
+        </div>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<footer class="proto-foot" id="contact">Design prototype for review. Navigation, remaining sections and the contact form are not included.</footer>
+<script src="hero.js"></script>
+<script src="use-cases-tabs.js"></script>
+<script src="security.js"></script>
+<script src="preview.js"></script>
+</body>
+</html>

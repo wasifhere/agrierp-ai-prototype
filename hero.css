@@ -1,0 +1,300 @@
+/* ==========================================================================
+   AgriCompanion — Feature page hero
+   Scoped to .af-hero / .af-btn.
+
+   ≥1200   Figma layout: 1356px row, two 672×776 cards, 12px gap
+   992–1199 Two columns, intro slightly wider, height grows with content
+   600–991 Cards stack: intro, then visual (600px tall, phones at 85%)
+   <600    Compact intro, full-width CTAs, visual 460px (phones at 62%)
+   ========================================================================== */
+
+.af-hero {
+  --af-yellow: #e0e000;          /* file token `yellow` */
+  --af-white: #f4f7f9;           /* file token `white` */
+  --af-ink: #0a1108;             /* file style `Black` */
+  --af-btn-green: #0c5a42;
+  --af-icon-green: #56bc61;
+  --af-font: "Plus Jakarta Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --af-ease: cubic-bezier(.22, .61, .36, 1);
+  --af-phone-scale: 1;
+
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  padding: 0 40px;
+  font-family: var(--af-font);
+  -webkit-font-smoothing: antialiased;
+}
+.af-hero *, .af-hero *::before, .af-hero *::after { box-sizing: inherit; }
+.af-hero :where(h1, p, ul, figure) { margin: 0; padding: 0; }
+.af-hero ul { list-style: none; }
+
+.af-hero__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  width: 100%;
+  max-width: 1356px;
+  min-height: 776px;
+}
+
+/* --- Intro card --------------------------------------------------------- */
+.af-hero__intro {
+  display: flex;
+  align-items: center;
+  padding: 60px;
+  border-radius: 20px;
+  background: linear-gradient(180deg, #03120d 0%, #062d22 100%);
+  color: #fff;
+}
+.af-hero__content { display: flex; flex-direction: column; gap: 40px; width: 100%; }
+.af-hero__lead { display: flex; flex-direction: column; align-items: flex-start; gap: 16px; }
+
+.af-hero__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8.662px;
+  height: 52px;
+  padding: 0 20.594px;
+  border-radius: 8px;
+  /* Figma: #1a1a1a 20% Plus Lighter + Glass(14) — approximated */
+  background: rgba(255, 255, 255, .03);
+  border: 1px solid rgba(255, 255, 255, .16);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .10), inset 0 -1px 6px rgba(0, 0, 0, .25);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+  color: var(--af-white);
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 18px;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.af-hero__badge-icon { color: var(--af-yellow); font-size: 18px; }
+
+.af-hero__title {
+  color: var(--af-white);
+  font-size: 54px;
+  font-weight: 600;
+  line-height: 66px;
+  letter-spacing: -2.7px;
+  overflow-wrap: break-word;
+}
+.af-hero__title-accent { color: var(--af-yellow); }
+.af-hero__text { font-size: 16px; line-height: 26px; letter-spacing: -.32px; }
+
+.af-hero__ctas { display: flex; flex-wrap: wrap; gap: 16px; }
+
+/* Pill button with icon disc (matches site "Button-red-P" pattern) */
+.af-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  height: 52px;
+  padding: 0 8px 0 20px;
+  border-radius: 50px;
+  font-family: inherit;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 18px;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background-color 220ms var(--af-ease), box-shadow 220ms var(--af-ease), transform 220ms var(--af-ease);
+}
+.af-btn--primary { background: var(--af-btn-green); color: #fff; }
+.af-btn--light { background: #fff; color: var(--af-ink); }
+.af-btn__icon {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--af-icon-green);
+  color: #fff;
+  font-size: 16px;
+  transition: transform 300ms var(--af-ease);
+}
+.af-btn:focus-visible { outline: 3px solid var(--af-yellow); outline-offset: 3px; }
+.af-btn:active { transform: translateY(1px); }
+
+.af-hero__powered { display: flex; flex-direction: column; gap: 24px; }
+.af-hero__powered-label {
+  color: var(--af-white);
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 18px;
+  text-transform: uppercase;
+}
+.af-hero__logos { display: flex; flex-wrap: wrap; gap: 24px; }
+.af-hero__logo {
+  display: grid;
+  place-items: center;
+  width: 160px;
+  height: 72px;
+  padding: 6.784px;
+  border-radius: 8px;
+  background: #fff;
+  transition: transform 250ms var(--af-ease), box-shadow 250ms var(--af-ease);
+}
+.af-hero__logo:first-child img { width: 130.629px; height: 37.42px; }
+.af-hero__logo:last-child img { width: 132px; height: 48px; }
+.af-hero__logo img { display: block; object-fit: contain; }
+
+/* --- Visual card -------------------------------------------------------- */
+.af-hero__visual {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid #e3e3e3;
+  border-radius: 20px;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, .25);
+  background: #b9c7b0;
+  isolation: isolate;
+}
+.af-hero__bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(calc(var(--af-bg-scale, 1) * var(--af-bg-drift, 1)));
+}
+.af-hero__veil { /* Figma: 1% black + background blur 8 */
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, .01);
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
+}
+.af-hero__stage {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  perspective: 1400px;
+}
+.af-hero__phones {
+  position: absolute; /* centred via translate so it stays centred even when wider than the card */
+  left: 50%;
+  top: 50%;
+  translate: -50% -50%;
+  width: 440px;
+  height: 626px;
+  scale: var(--af-phone-scale);
+  transform-style: preserve-3d;
+  transform: rotateX(var(--af-rx, 0deg)) rotateY(var(--af-ry, 0deg));
+  transition: transform 500ms var(--af-ease);
+}
+.af-hero__phone {
+  position: absolute;
+  display: block;
+  max-width: none;
+  border-radius: 22.34px;
+  transition: opacity 800ms var(--af-ease), translate 1000ms var(--af-ease), transform 450ms var(--af-ease);
+}
+.af-hero__phone--back {
+  left: 183.12px;
+  top: 67.63px;
+  width: 256.881px;
+  height: 558.492px;
+  transform: translate3d(var(--af-back-x, 0px), calc(var(--af-back-y, 0px) + var(--af-back-par, 0px) + var(--af-float-back, 0px)), var(--af-back-z, 0px));
+}
+.af-hero__phone--front {
+  left: 0;
+  top: 0;
+  width: 268.224px;
+  height: 583.153px;
+  box-shadow: 11.17px 16.755px 106.114px rgba(0, 0, 0, .25);
+  transform: translate3d(var(--af-front-x, 0px), calc(var(--af-front-y, 0px) + var(--af-front-par, 0px) + var(--af-float-front, 0px)), var(--af-front-z, 0px));
+}
+
+/* --- Hover (mouse only) ------------------------------------------------- */
+@media (hover: hover) and (pointer: fine) {
+  .af-btn--primary:hover { background: #0f6b4f; box-shadow: 0 6px 20px rgba(2, 181, 83, .25); }
+  .af-btn--light:hover { background: #eef5ef; box-shadow: 0 6px 20px rgba(255, 255, 255, .18); }
+  .af-btn:hover .af-btn__icon { transform: rotate(-12deg) scale(1.06); }
+  .af-hero__logo:hover { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(0, 0, 0, .25); }
+}
+
+/* --- Entrance (only once JS runs; static and visible otherwise) --------- */
+.af-hero.af--js [data-af-in] {
+  opacity: 0;
+  translate: 0 20px;
+  transition: opacity 700ms var(--af-ease), translate 700ms var(--af-ease);
+  transition-delay: calc(var(--af-i, 0) * 90ms + 100ms);
+}
+.af-hero.af--js .af-hero__bg { --af-bg-scale: 1.08; transition: transform 1600ms var(--af-ease); }
+.af-hero.af--js .af-hero__phone { opacity: 0; translate: 0 70px; }
+.af-hero.af--js .af-hero__phone--front { transition-delay: 250ms; }
+.af-hero.af--js .af-hero__phone--back { transition-delay: 450ms; }
+
+.af-hero.af--js.is-in [data-af-in] { opacity: 1; translate: 0 0; }
+.af-hero.af--js.is-in .af-hero__bg { --af-bg-scale: 1; }
+.af-hero.af--js.is-in .af-hero__phone { opacity: 1; translate: 0 0; }
+.af-hero.af--js.is-settled .af-hero__phone { transition-delay: 0s; }
+.af-hero.af--no-anim, .af-hero.af--no-anim * { transition: none !important; }
+
+/* --- Ambient motion (starts once the entrance has settled) ----------------
+   Phones bob a few px out of phase, the photo drifts very slowly, the badge sparkle twinkles. */
+@property --af-float-front { syntax: "<length>"; inherits: false; initial-value: 0px; }
+@property --af-float-back  { syntax: "<length>"; inherits: false; initial-value: 0px; }
+@property --af-bg-drift    { syntax: "<number>"; inherits: false; initial-value: 1; }
+@keyframes af-float-front { 0%, 100% { --af-float-front: 0px; } 50% { --af-float-front: -8px; } }
+@keyframes af-float-back  { 0%, 100% { --af-float-back: 0px; }  50% { --af-float-back: -5px; } }
+@keyframes af-drift       { from { --af-bg-drift: 1; } to { --af-bg-drift: 1.045; } }
+@keyframes af-twinkle     { 0%, 70%, 100% { opacity: 1; scale: 1; rotate: 0deg; } 80% { opacity: .55; scale: .82; rotate: -12deg; } 90% { opacity: 1; scale: 1.08; rotate: 6deg; } }
+.af-hero.is-settled .af-hero__phone--front { animation: af-float-front 6.5s ease-in-out infinite; }
+.af-hero.is-settled .af-hero__phone--back  { animation: af-float-back 7.5s ease-in-out -2.5s infinite; }
+.af-hero.is-settled .af-hero__bg { animation: af-drift 22s ease-in-out infinite alternate; }
+.af-hero__badge-icon { display: inline-block; animation: af-twinkle 4.5s ease-in-out 1.5s infinite; }
+
+/* --- 992–1199 ------------------------------------------------------------ */
+@media (max-width: 1199.98px) {
+  .af-hero__title { text-wrap: pretty; }
+  .af-hero { padding: 0 24px; }
+  .af-hero__grid { grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); min-height: 700px; }
+  .af-hero__intro { padding: 48px; }
+  .af-hero__title { font-size: 44px; line-height: 54px; letter-spacing: -2px; }
+  .af-hero { --af-phone-scale: .88; }
+}
+
+/* --- Tablet: stack ------------------------------------------------------ */
+@media (max-width: 991.98px) {
+  .af-hero__grid { grid-template-columns: minmax(0, 1fr); min-height: 0; }
+  .af-hero__intro { padding: 56px 48px; }
+  .af-hero__visual { height: 600px; }
+  .af-hero { --af-phone-scale: .85; }
+}
+
+/* --- Mobile ------------------------------------------------------------- */
+@media (max-width: 599.98px) {
+  .af-hero { padding: 0 12px; --af-phone-scale: .62; }
+  .af-hero__grid { gap: 10px; }
+  .af-hero__intro { padding: 36px 20px; border-radius: 16px; }
+  .af-hero__content { gap: 32px; }
+  .af-hero__lead { gap: 14px; }
+  .af-hero__badge { height: 40px; padding: 0 14px; gap: 8px; font-size: 12px; line-height: 16px; }
+  .af-hero__badge-icon { font-size: 14px; }
+  .af-hero__title { font-size: 34px; line-height: 42px; letter-spacing: -1.4px; }
+  .af-hero__text { font-size: 15px; line-height: 24px; }
+  .af-hero__ctas { flex-direction: column; gap: 12px; }
+  .af-btn { justify-content: space-between; width: 100%; }
+  .af-hero__powered { gap: 16px; }
+  .af-hero__powered-label { font-size: 12px; }
+  .af-hero__logos { gap: 12px; flex-wrap: nowrap; }
+  .af-hero__logo { flex: 1 1 0; width: auto; height: 64px; }
+  .af-hero__logo:first-child img { width: 112px; height: auto; }
+  .af-hero__logo:last-child img { width: 112px; height: auto; }
+  .af-hero__visual { height: 460px; border-radius: 16px; }
+}
+
+/* --- Reduced motion ------------------------------------------------------ */
+@media (prefers-reduced-motion: reduce) {
+  .af-hero.af--js [data-af-in],
+  .af-hero.af--js .af-hero__phone { opacity: 1 !important; translate: 0 0 !important; transition: none !important; }
+  .af-hero .af-hero__bg { --af-bg-scale: 1 !important; transition: none !important; }
+  .af-hero__phones { transform: none !important; transition: none !important; }
+  .af-hero__phone { --af-back-par: 0px !important; --af-front-par: 0px !important; --af-back-x: 0px !important; --af-front-x: 0px !important; --af-back-y: 0px !important; --af-front-y: 0px !important; }
+  .af-btn, .af-btn__icon, .af-hero__logo { transition: none !important; }
+  .af-hero__phone, .af-hero__bg, .af-hero__badge-icon { animation: none !important; }
+}
